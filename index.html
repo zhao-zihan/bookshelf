@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/book-icon.svg" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <script type="module" src="scripts/controller.js"></script>
     <title>Bookshelf</title>
   </head>
   <body>
@@ -51,6 +53,20 @@
               <span>Search</span>
             </button>
           </form>
+          <div class="search__filter">
+            <ul class="selections" data-search-by="all">
+              <li class="selection all" data-filter="all"><span>All</span></li>
+              <li class="selection title" data-filter="title">
+                <span>Title</span>
+              </li>
+              <li class="selection author" data-filter="author">
+                <span>Author</span>
+              </li>
+              <li class="selection publisher" data-filter="publisher">
+                <span>Publisher</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
     </div>
