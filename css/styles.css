@@ -1,0 +1,157 @@
+:root[color-mode="light"] {
+  --surface1: #ffffff;
+  --surface2: #f2f2f2;
+  --surface3: #ffffff;
+  --element1: #111111;
+  --element2: #222222;
+  --element3: #333333;
+  --elementInverse: #eee;
+  --primary: #1d74df;
+  --secondary: #3c5d5c;
+  --tertiary: #fff7d6;
+}
+
+/* Dark Mode */
+:root[color-mode="dark"] {
+  --surface1: #262626;
+  --surface2: #333333;
+  --surface3: #404040;
+  --element1: #eeeeee;
+  --element2: #dddddd;
+  --element3: #cccccc;
+  --elementInverse: #111;
+  --primary: #8fceff;
+  --secondary: #72faca;
+  --tertiary: #eee8a9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--surface1);
+}
+
+.header {
+  background-image: url("/images/background.jpeg");
+  background-position: center;
+  background-size: contain;
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search__box {
+  display: flex;
+  gap: 1rem;
+  width: auto;
+  height: max-content;
+  margin-top: 8rem;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--surface3);
+  border-radius: 5px;
+}
+
+.btn svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.category__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  background-color: var(--surface3);
+}
+
+.category__btn:hover {
+  cursor: pointer;
+  background-color: var(--surface2);
+}
+
+/* https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element#:~:text=You%20can't%20change%20the,or%20using%20inline. */
+.category__btn svg {
+  color: var(--element1);
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color */
+.search input {
+  border: none;
+  width: 25rem;
+  padding: 0.7rem;
+  border-left: 1px solid var(--elementInverse);
+  border-right: 1px solid var(--elementInverse);
+  caret-color: var(--element1);
+  font-size: 1.1rem;
+}
+
+/* https://stackoverflow.com/questions/3397113/how-to-remove-focus-border-outline-around-text-input-boxes-chrome */
+.search input:focus {
+  outline: none;
+}
+
+.search input:focus::-webkit-input-placeholder {
+  color: transparent !important;
+}
+.search input:focus::-moz-placeholder {
+  color: transparent !important;
+}
+.search input:focus:-moz-placeholder {
+  color: transparent !important;
+}
+
+/* https://stackoverflow.com/questions/5617703/background-color-in-input-and-text-fields */
+.search__field {
+  background-color: var(--surface1);
+}
+
+.search__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 1rem;
+  height: fit-content;
+  background-color: var(--primary);
+  color: var(--elementInverse);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.search__btn svg {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.search__btn span {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.search__btn:hover {
+  cursor: pointer;
+}
+
+.search__btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.35);
+}
