@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import functionView from "./views/functionView.js";
 import bookmarkView from "./views/bookmarkView.js";
+import resultsView from "./views/resultsView.js";
 
 const controlSearchResults = async function () {
   try {
@@ -12,6 +13,8 @@ const controlSearchResults = async function () {
     const searchBy = model.state.search.searchBy;
 
     await model.loadSearchResults(query, searchBy);
+
+    resultsView.render(model.getSearchResultsPage());
   } catch (error) {
     console.log(error);
   }
