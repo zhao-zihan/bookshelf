@@ -7,7 +7,7 @@ const controlSearchResults = async function () {
     const query = searchView.getQuery();
     if (!query) return;
 
-    const searchBy = searchView.getSearchBy();
+    const searchBy = model.state.search.searchBy;
 
     await model.loadSearchResults(query, searchBy);
   } catch (error) {
@@ -15,7 +15,22 @@ const controlSearchResults = async function () {
   }
 };
 
+const controlSearchType = async function (searchBy) {
+  try {
+    model.state.search.searchBy = searchBy;
+    console.log(model.state);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const controlCategoryBox = async function () {
+  searchView.openCategoryBox();
+};
+
 const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
+  searchView.addHandlerSearchBy(controlSearchType);
+  searchView.addHandlerDisplaySelections(controlCategoryBox);
 };
 init();
