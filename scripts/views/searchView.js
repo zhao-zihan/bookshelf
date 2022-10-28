@@ -7,14 +7,14 @@ class SearchView {
     return query;
   }
 
-  getSearchBy() {
-    const searchBy =
-      this._parentElement.querySelector(".selections").dataset.searchBy;
-    return searchBy;
-  }
-
   _clearInput() {
     this._parentElement.querySelector(".search__field").value = "";
+  }
+
+  openCategoryBox() {
+    this._parentElement
+      .querySelector(".search__filter")
+      .classList.toggle("open");
   }
 
   addHandlerSearch(handler) {
@@ -29,8 +29,17 @@ class SearchView {
       const selection = e.target.closest(".selection");
       if (!selection) return;
 
-      const searchBy = selection.dataset.searchBy;
+      const searchBy = selection.dataset.filter;
       handler(searchBy);
+    });
+  }
+
+  addHandlerDisplaySelections(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".category__btn");
+      if (!btn) return;
+
+      handler();
     });
   }
 }
