@@ -1,6 +1,7 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import functionView from "./views/functionView.js";
+import bookmarkView from "./views/bookmarkView.js";
 
 const controlSearchResults = async function () {
   try {
@@ -38,10 +39,15 @@ const controlLightMode = function () {
   );
 };
 
+const controlBookmarkBox = function () {
+  bookmarkView.toggleBookmarks();
+};
+
 const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   searchView.addHandlerSearchBy(controlSearchType);
   searchView.addHandlerDisplaySelections(controlCategoryBox);
   functionView.addHandlerSwitchMode(controlLightMode);
+  bookmarkView.addHandlerOpenBookmarks(controlBookmarkBox);
 };
 init();
