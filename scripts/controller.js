@@ -19,14 +19,15 @@ const controlSearchResults = async function () {
 const controlSearchType = async function (searchBy) {
   try {
     model.state.search.searchBy = searchBy;
-    console.log(model.state);
+    searchView.toggleCategoryBox();
+    searchView.displaySearchPlaceholder(searchBy);
   } catch (error) {
     console.log(error);
   }
 };
 
 const controlCategoryBox = function () {
-  searchView.openCategoryBox();
+  searchView.toggleCategoryBox();
 };
 
 const controlLightMode = function () {

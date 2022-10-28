@@ -11,10 +11,22 @@ class SearchView {
     this._parentElement.querySelector(".search__field").value = "";
   }
 
-  openCategoryBox() {
+  toggleCategoryBox() {
     this._parentElement
       .querySelector(".search__filter")
       .classList.toggle("open");
+  }
+
+  displaySearchPlaceholder(type) {
+    if (type === "all") {
+      this._parentElement.querySelector(
+        ".search__field"
+      ).placeholder = `Search Books...`;
+      return;
+    }
+    this._parentElement.querySelector(
+      ".search__field"
+    ).placeholder = `Search Books by ${type[0].toUpperCase() + type.slice(1)}`;
   }
 
   addHandlerSearch(handler) {
