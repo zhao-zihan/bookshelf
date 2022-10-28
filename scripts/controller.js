@@ -1,5 +1,6 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
+import functionView from "./views/functionView.js";
 
 const controlSearchResults = async function () {
   try {
@@ -24,13 +25,22 @@ const controlSearchType = async function (searchBy) {
   }
 };
 
-const controlCategoryBox = async function () {
+const controlCategoryBox = function () {
   searchView.openCategoryBox();
+};
+
+const controlLightMode = function () {
+  const mode = document.documentElement.getAttribute("color-mode");
+  document.documentElement.setAttribute(
+    "color-mode",
+    `${mode === "light" ? "dark" : "light"}`
+  );
 };
 
 const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   searchView.addHandlerSearchBy(controlSearchType);
   searchView.addHandlerDisplaySelections(controlCategoryBox);
+  functionView.addHandlerSwitchMode(controlLightMode);
 };
 init();
