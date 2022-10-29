@@ -18,6 +18,7 @@
   --secondary: #51a069;
   --tertiary: #f79422;
   --border: rgb(210, 207, 207);
+  --bookmark: red;
 }
 
 /* Dark Mode */
@@ -36,6 +37,7 @@
   --secondary: #47b176;
   --tertiary: #de8520;
   --border: rgb(82, 81, 81);
+  --bookmark: rgb(225, 3, 3);
 }
 
 * {
@@ -337,14 +339,88 @@ body {
   position: absolute;
 
   right: 6rem;
-  width: 200px;
-  height: 100px;
-  background-color: #1d74df;
+  min-width: 20rem;
+  height: fit-content;
+  background-color: var(--surface2);
   z-index: 2;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15);
 }
 
 .bookmark__list-container.open {
   display: block;
+}
+
+/* BOOKMARK RESULTS */
+
+.bookmark__list {
+  list-style: none;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bookmark__item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15);
+  background-color: var(--surface1);
+}
+
+.bookmark__image {
+  width: 4rem;
+  height: auto;
+  border-radius: 5px;
+}
+
+.bookmark__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.bookmark__title {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--element1);
+  text-decoration: none;
+}
+
+.bookmark__author {
+  color: var(--element4);
+}
+
+.bookmark__preview-btn {
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  width: fit-content;
+}
+
+.bookmark__preview-link {
+  display: flex;
+  text-decoration: none;
+  padding: 0.1rem 0.5rem;
+  color: var(--primary);
+  align-items: center;
+}
+
+.bookmark__preview-icon {
+  width: 20px;
+  height: auto;
+}
+
+.error {
+  width: 100%;
+  height: 5rem;
+}
+
+.error p {
+  width: 100%;
 }
 
 /* LIGHT MODE */
@@ -500,6 +576,30 @@ body {
 .preview__info {
   width: 100%;
   margin: 0 auto;
+}
+
+.title-box {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.bookmark__btn-small {
+  border: none;
+  background-color: var(--surface1);
+  width: 20px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookmark__btn-small:hover {
+  cursor: pointer;
+}
+
+.bookmark__btn-small.bookmarked svg {
+  color: var(--bookmark);
 }
 
 .preview__title {
