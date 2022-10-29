@@ -9,6 +9,7 @@ const controlSearchResults = async function () {
     // Get search query
     const query = searchView.getQuery();
     if (!query) return;
+    resultsView.renderLoadingBar();
 
     const searchBy = model.state.search.searchBy;
 

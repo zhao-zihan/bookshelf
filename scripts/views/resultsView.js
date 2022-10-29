@@ -15,6 +15,15 @@ class ResultsView {
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
+  renderLoadingBar() {
+    const markup = `
+    <div class="loading-bar">
+    </div> 
+    `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
   _generateImageMarkup(data) {
     if (data.image) {
       return `
