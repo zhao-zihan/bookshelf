@@ -45,6 +45,7 @@ class ResultsView {
         <a
           href="${result.infoLink}"
           class="preview__title"
+          target="_blank"
           >${result.title}</a
         >
         <div class="preview__info-publication">
@@ -87,6 +88,7 @@ class ResultsView {
           <a
             href="${result.previewLink}"
             class="preview__link"
+            target="_blank"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
