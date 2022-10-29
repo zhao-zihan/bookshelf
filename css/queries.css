@@ -29,7 +29,7 @@
   }
 }
 
-@media screen and (min-width: 43.75rem) {
+@media screen and (min-width: 46rem) {
   .main {
     width: 80%;
   }
@@ -55,7 +55,7 @@
   }
 }
 
-@media screen and (min-width: 60rem) {
+@media screen and (min-width: 63rem) {
   .main {
     width: 70%;
   }
@@ -66,5 +66,9 @@
 
   .preview__title {
     font-size: 1.5rem;
+  }
+
+  .preview__btn {
+    margin-top: 2.5rem;
   }
 }
