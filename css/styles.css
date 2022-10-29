@@ -234,7 +234,7 @@ body {
 .function__box {
   display: flex;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1.5rem 0.5rem 0.5rem 0.5rem;
   position: absolute;
   top: -4rem;
   width: 100%;
@@ -284,7 +284,7 @@ body {
 
 .btn--inline {
   display: flex;
-  width: 2.75rem;
+  width: fit-content;
   align-items: center;
   padding: 0 0.2rem;
   border-radius: 8px;

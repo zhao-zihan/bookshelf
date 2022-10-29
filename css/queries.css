@@ -24,6 +24,10 @@
     width: 6rem;
   }
 
+  .btn--inline {
+    width: 2.75rem;
+  }
+
   .pagination span {
     display: inline-block;
   }
