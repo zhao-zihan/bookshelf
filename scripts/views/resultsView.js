@@ -44,6 +44,55 @@ class ResultsView {
     }
   }
 
+  _generatePublicationMarkup(result) {
+    return `
+    <div class="preview__info-publication">
+    ${
+      result.authors
+        ? '<span class="preview__info-author">' + result.authors + "</span>"
+        : ""
+    }
+    ${
+      result.publisher
+        ? '<span class="preview__info-publisher">(' +
+          result.publisher +
+          ")</span>"
+        : ""
+    }
+    ${
+      result.publishDate
+        ? '<span class="preview__info-date">' + result.publishDate + "</span>"
+        : ""
+    }
+
+    </div>
+    `;
+  }
+
+  _generateVolumeInfoMarkup(result) {
+    return `
+    <div class="preview__info-volume-info">
+      ${
+        result.category
+          ? '<div class="preview__info-category">' + result.category + "</div>"
+          : ""
+      }
+      ${
+        result.pageCount
+          ? '<div class="preview__info-page">Page: ' +
+            result.pageCount +
+            "</div>"
+          : ""
+      }
+      ${
+        result.ISBN
+          ? '<div class="preview__info-identifier">' + result.ISBN + "</div>"
+          : ""
+      }
+    </div>
+    `;
+  }
+
   _generateMarkup() {
     return this._data
       .map(
@@ -57,28 +106,8 @@ class ResultsView {
           target="_blank"
           >${result.title}</a
         >
-        <div class="preview__info-publication">
-          <span class="preview__info-author">${
-            result.authors ? result.authors : ""
-          }</span>
-          <span class="preview__info-publisher">(${
-            result.publisher ? result.publisher : ""
-          })</span>
-          <span class="preview__info-date">${
-            result.publishDate ? result.publishDate : 0
-          }0</span>
-        </div>
-        <div class="preview__info-volume-info">
-          <div class="preview__info-category">${
-            result.category ? result.category : ""
-          }</div>
-          <div class="preview__info-page">Page: ${
-            result.pageCount ? result.pageCount : ""
-          }</div>
-          <div class="preview__info-identifier">
-            ${result.ISBN ? "Identifier: " + result.ISBN : ""}
-          </div>
-        </div>
+        ${this._generatePublicationMarkup(result)}
+        ${this._generateVolumeInfoMarkup(result)}
       </div>
       <div class="preview__ratings">
         <div class="rating-info">
