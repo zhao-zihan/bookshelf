@@ -1,7 +1,7 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
-import functionView from "./views/functionView.js";
-import bookmarkView from "./views/bookmarkView.js";
+import functionsView from "./views/functionsView.js";
+import bookmarksView from "./views/bookmarksView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 
@@ -16,7 +16,7 @@ const controlSearchResults = async function () {
 
     await model.loadSearchResults(query, searchBy);
 
-    functionView.displayFunctionLeftBox(model.state.search.numResults);
+    functionsView.displayFunctionLeftBox(model.state.search.numResults);
 
     resultsView.render(model.getSearchResultsPage());
 
@@ -57,15 +57,42 @@ const controlLightMode = function () {
 };
 
 const controlBookmarkBox = function () {
-  bookmarkView.toggleBookmarks();
+  functionsView.toggleBookmarks();
+};
+
+const controlAddBookmark = function (id) {
+  // // 1) Add / remove bookmarks
+  // if (!model.state.recipe.bookmarked) {
+  //   model.addBookmark(model.state.recipe);
+  // } else {
+  //   model.deleteBookmark(model.state.recipe.id);
+  // }
+
+  // // 2) Update recipe view
+  // recipeView.update(model.state.recipe);
+
+  // // 3) Render bookmarks
+  // bookmarksView.render(model.state.bookmarks);
+
+  // 1) Add / remove bookmarks
+  const match = model.state.search.results.find((element) => element.id === id);
+  if (!match.bookmarked) {
+    model.addBookmark(match);
+  } else {
+    model.deleteBookmark(id);
+  }
+
+  // 2) Render bookmarks
+  bookmarksView.render(model.state.bookmarks);
 };
 
 const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   searchView.addHandlerSearchBy(controlSearchType);
   searchView.addHandlerDisplaySelections(controlCategoryBox);
-  functionView.addHandlerSwitchMode(controlLightMode);
-  bookmarkView.addHandlerOpenBookmarks(controlBookmarkBox);
+  functionsView.addHandlerSwitchMode(controlLightMode);
+  functionsView.addHandlerOpenBookmarks(controlBookmarkBox);
+  resultsView.addHandlerAddBookmark(controlAddBookmark);
   paginationView.addHandlerClick(controlPagination);
 };
 init();

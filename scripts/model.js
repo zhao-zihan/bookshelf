@@ -15,6 +15,21 @@ export const state = {
   bookmarks: [],
 };
 
+export const addBookmark = function (book) {
+  book.bookmarked = true;
+  console.log(state.search.results);
+  state.bookmarks.push(book);
+};
+
+export const deleteBookmark = function (id) {
+  // Delete bookmark
+  const index = state.bookmarks.findIndex((el) => el.id === id);
+  state.bookmarks.splice(index, 1);
+
+  // Mark current recipe as NOT bookmarked
+  state.search.results.find((result) => result.id === id).bookmarked = false;
+};
+
 export const loadSearchResults = async function (
   query,
   searchBy = state.search.searchBy
@@ -38,6 +53,7 @@ export const loadSearchResults = async function (
         infoLink: item.volumeInfo.infoLink,
         image: item.volumeInfo.imageLinks?.smallThumbnail,
         authors: item.volumeInfo.authors?.join(", "),
+        mainAuthor: item.volumeInfo.authors?.[0],
         publisher: item.volumeInfo.publisher,
         publishDate: item.volumeInfo.publishedDate,
         pageCount: item.volumeInfo.pageCount,
