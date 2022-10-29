@@ -1,7 +1,7 @@
 class ResultsView {
   _data;
   _parentElement = document.querySelector(".results");
-  _errorMessage = "No recipes found for your query!";
+  _errorMessage = "No books found for your query!";
   _message = "";
 
   render(data) {
@@ -22,6 +22,17 @@ class ResultsView {
     `;
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  addHandlerAddBookmark(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".bookmark__btn-small");
+      if (!btn) return;
+
+      btn.classList.toggle("bookmarked");
+      const id = btn.dataset.id;
+      handler(id);
+    });
   }
 
   _generateImageMarkup(data) {
@@ -100,12 +111,28 @@ class ResultsView {
       <li class="preview">
       ${this._generateImageMarkup(result)}
       <div class="preview__info">
-        <a
-          href="${result.infoLink}"
-          class="preview__title"
-          target="_blank"
-          >${result.title}</a
-        >
+        <div class="title-box">
+          <a
+            href="${result.infoLink}"
+            class="preview__title"
+            target="_blank"
+            >${result.title}</a
+          >
+          <button class="btn bookmark__btn-small" data-id=${result.id}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="w-5 h-5 bookmark__icon"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 2c-1.716 0-3.408.106-5.07.31C3.806 2.45 3 3.414 3 4.517V17.25a.75.75 0 001.075.676L10 15.082l5.925 2.844A.75.75 0 0017 17.25V4.517c0-1.103-.806-2.068-1.93-2.207A41.403 41.403 0 0010 2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+        </div>
         ${this._generatePublicationMarkup(result)}
         ${this._generateVolumeInfoMarkup(result)}
       </div>
