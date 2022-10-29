@@ -15,10 +15,16 @@ export const state = {
   bookmarks: [],
 };
 
+const persistBookmarks = function () {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
 export const addBookmark = function (book) {
   book.bookmarked = true;
   console.log(state.search.results);
   state.bookmarks.push(book);
+
+  persistBookmarks();
 };
 
 export const deleteBookmark = function (id) {
@@ -28,6 +34,8 @@ export const deleteBookmark = function (id) {
 
   // Mark current recipe as NOT bookmarked
   state.search.results.find((result) => result.id === id).bookmarked = false;
+
+  persistBookmarks();
 };
 
 export const loadSearchResults = async function (
@@ -66,7 +74,7 @@ export const loadSearchResults = async function (
     });
     state.search.page = 1;
 
-    console.log(state.search);
+    console.log(state);
     console.log(data);
   } catch (error) {
     throw error;
@@ -81,3 +89,17 @@ export const getSearchResultsPage = function (page = state.search.page) {
 
   return state.search.results.slice(start, end);
 };
+
+const init = function () {
+  const storage = localStorage.getItem("bookmarks");
+  if (storage) {
+    state.bookmarks = JSON.parse(storage);
+  }
+};
+init();
+
+const clearBookmarks = function () {
+  localStorage.clear("bookmarks");
+};
+
+// clearBookmarks();

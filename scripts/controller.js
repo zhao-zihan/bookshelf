@@ -61,22 +61,10 @@ const controlBookmarkBox = function () {
 };
 
 const controlAddBookmark = function (id) {
-  // // 1) Add / remove bookmarks
-  // if (!model.state.recipe.bookmarked) {
-  //   model.addBookmark(model.state.recipe);
-  // } else {
-  //   model.deleteBookmark(model.state.recipe.id);
-  // }
-
-  // // 2) Update recipe view
-  // recipeView.update(model.state.recipe);
-
-  // // 3) Render bookmarks
-  // bookmarksView.render(model.state.bookmarks);
-
-  // 1) Add / remove bookmarks
   const match = model.state.search.results.find((element) => element.id === id);
-  if (!match.bookmarked) {
+  const inLocal = model.state.bookmarks.find((element) => element.id === id);
+
+  if (!match.bookmarked && !inLocal) {
     model.addBookmark(match);
   } else {
     model.deleteBookmark(id);
@@ -86,7 +74,12 @@ const controlAddBookmark = function (id) {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlBookmarks = function () {
+  bookmarksView.render(model.state.bookmarks);
+};
+
 const init = function () {
+  bookmarksView.addHandlerRender(controlBookmarks);
   searchView.addHandlerSearch(controlSearchResults);
   searchView.addHandlerSearchBy(controlSearchType);
   searchView.addHandlerDisplaySelections(controlCategoryBox);
