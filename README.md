@@ -6,4 +6,4 @@ Live site: https://zhao-zihan.github.io/bookshelf/
 
 ![](markdown-img/2022-10-29-09-00-11.png)
 
-Credit: this repo is inspired by KelvinQiu(github: KelvinQiu802)'s repo bookstore. All codes are original.
+Credit: this repo is inspired by KelvinQiu's (github: [KelvinQiu802](https://github.com/KelvinQiu802)) repo [bookstore](https://github.com/KelvinQiu802/bookstore). All codes are original.
