@@ -5,3 +5,5 @@ This is an online book searching tool based on Google books api. It allows you t
 Live site: https://zhao-zihan.github.io/bookshelf/
 
 ![](markdown-img/2022-10-29-09-00-11.png)
+
+Credit: this repo is inspired by KelvinQiu(github: KelvinQiu802)'s repo bookstore. All codes are original.
